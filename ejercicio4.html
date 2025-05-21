@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejercicio 4 - Buscar Pedidos de Cliente</title>
+    <link rel="stylesheet" href="estilo_pagina_principal.css" />
+  </head>
+  <body>
+    <a href="Pagina_principal.html" style="display: block; margin-bottom: 20px"
+      >⬅ Volver al índice</a
+    >
+    <a href="ejercicio5.html" class="boton-navegacion"
+      >Ver siguiente ejercicio ➡️</a
+    >
+
+    <h1>Ejercicio 4 - Buscar Pedidos de Cliente</h1>
+
+    <h2>📌 ¿Para qué sirve?</h2>
+    <p>
+      Este ejercicio permite al usuario buscar un cliente por su ID o nombre, y
+      consultar los pedidos que tenga registrados en la base de datos.
+    </p>
+
+    <img
+      src="imagenes/ejercicio4cap.png"
+      alt="Ventana de búsqueda de cliente"
+      style="max-width: 100%; margin-bottom: 20px"
+    />
+
+    <h2>🧭 ¿Cómo se utiliza?</h2>
+    <ol>
+      <li>
+        Desde la ventana principal, haz clic en "Buscar pedidos Cliente y ver
+        detalles".
+      </li>
+      <li>
+        En la nueva ventana, introduce el <strong>ID</strong> o el
+        <strong>nombre</strong> del cliente.
+      </li>
+      <li>Pulsa el botón <strong>"Buscar cliente"</strong>.</li>
+      <li>
+        En la parte inferior aparecerá una tabla con los pedidos realizados por
+        ese cliente (si tiene).
+      </li>
+      <li>
+        También puedes seleccionar un pedido y hacer clic en
+        <strong>"Ver detalles del pedido"</strong> (opcional, si se implementa).
+      </li>
+    </ol>
+
+    <img
+      src="imagenes/ejercicio4_img2.png"
+      alt="Búsqueda con resultado de pedidos"
+      style="max-width: 100%; margin-bottom: 20px"
+    />
+
+    <h2>📋 ¿Qué información se muestra?</h2>
+    <p>
+      En la tabla de resultados se pueden ver los siguientes datos de cada
+      pedido:
+    </p>
+    <ul>
+      <li><strong>ID del pedido</strong></li>
+      <li><strong>ID del cliente</strong></li>
+      <li><strong>Estado del pedido</strong></li>
+      <li><strong>ID del comercial (salesman)</strong></li>
+      <li><strong>Fecha del pedido</strong></li>
+    </ul>
+
+    <h2>✅ ¿Qué pasa si no se encuentra el cliente?</h2>
+    <p>
+      Si no hay ningún cliente que coincida con el nombre o ID introducido, se
+      muestra un mensaje avisando al usuario.
+    </p>
+
+    <h2>✅ ¿Y si el cliente no tiene pedidos?</h2>
+    <p>
+      Si el cliente existe pero no tiene pedidos registrados, también se informa
+      con un mensaje.
+    </p>
+
+    <img
+      src="imagenes/ejercicio4_img3.png"
+      alt="Ejemplo de cliente sin pedidos"
+      style="max-width: 100%; margin-bottom: 20px"
+    />
+
+    <h2>🎯 Resultado final</h2>
+    <p>
+      Esta funcionalidad permite consultar de manera sencilla los pedidos de
+      cualquier cliente, útil para revisar su historial comercial o comprobar su
+      actividad reciente.
+    </p>
+  </body>
+</html>

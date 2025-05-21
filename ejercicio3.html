@@ -6,21 +6,37 @@
     <link rel="stylesheet" href="estilo_pagina_principal.css" />
   </head>
   <body>
-    <a href="Pagina_principal.html" style="display: block; margin-bottom: 20px">
-      ⬅ Volver al índice
-    </a>
-
-    <a href="ejercicio4.html" class="boton-navegacion">
-      Ver siguiente ejercicio ➡️
-    </a>
+    <a href="Pagina_principal.html" style="display: block; margin-bottom: 20px"
+      >⬅ Volver al índice</a
+    >
+    <a href="ejercicio4.html" class="boton-navegacion"
+      >Ver siguiente ejercicio ➡️</a
+    >
 
     <h1>Ejercicio 3 - Modificar Cliente</h1>
 
-    <h2>📌 Objetivo</h2>
+    <h2>📌 ¿Para qué sirve?</h2>
     <p>
-      Mostrar en una tabla todos los clientes registrados y permitir modificar
-      sus datos (tanto los del cliente como del contacto relacionado).
+      Este apartado permite consultar todos los clientes registrados y modificar
+      sus datos de forma sencilla, incluyendo también los datos del contacto
+      asociado a cada cliente.
     </p>
+
+    <h2>🧭 ¿Cómo se utiliza?</h2>
+    <ol>
+      <li>
+        Desde la ventana principal, se hace clic en el botón "Modificar
+        cliente".
+      </li>
+      <li>Se abre una tabla con todos los clientes registrados.</li>
+      <li>Selecciona un cliente de la tabla.</li>
+      <li>Haz clic en el botón "Modificar cliente".</li>
+      <li>
+        Se abrirá una nueva ventana con los datos actuales del cliente y su
+        contacto.
+      </li>
+      <li>Edita los datos que desees y pulsa el botón "Grabar cambios".</li>
+    </ol>
 
     <img
       src="imagenes/ejercicio3_img1.png"
@@ -28,154 +44,54 @@
       style="max-width: 100%; margin-bottom: 20px"
     />
 
-    <h2>🧠 ¿Qué hace este ejercicio?</h2>
-    <p>
-      Se abre una ventana con un <code>JTable</code> que muestra los datos de
-      todos los clientes. Si el usuario selecciona uno, se activa el botón
-      “Modificar cliente”. Al pulsarlo, se abre otra ventana donde aparecen los
-      campos editables con los datos actuales del cliente y su contacto. Cuando
-      se pulsan los cambios, se actualizan en la base de datos usando dos
-      <code>UPDATE</code>: uno para la tabla <code>customers</code> y otro para
-      <code>contacts</code>.
-    </p>
-
-    <h2>🧭 ¿Dónde empieza todo?</h2>
-    <h3>1️⃣ Desde la ventana principal</h3>
-    <p>
-      Cuando se pulsa el botón “Modificar cliente”, se llama al método
-      <code>cargarVistaModificarCustomers()</code> del controlador
-      <code>ModificarCustomerControllerEjercicio3</code>. Este método se conecta
-      a la base de datos y obtiene la lista de todos los clientes usando
-      <code>CustomerDAOImpl.getAll()</code>. Esa lista se pasa a la vista
-      <code>TablaClienteVista</code> para rellenar el <code>JTable</code>.
-    </p>
-
-    <img
-      src="imagenes/ejercicio3_img2.png"
-      alt="Controlador cargando clientes"
-      style="max-width: 100%; margin-bottom: 20px"
-    />
-
-    <img
-      src="imagenes/ejercicio3_img3.png"
-      alt="Controlador cargando clientes"
-      style="max-width: 100%; margin-bottom: 20px"
-    />
-
-    <h2>🖱️ ¿Qué pasa al pulsar “Modificar cliente”?</h2>
+    <h2>🧾 ¿Qué datos puedes modificar?</h2>
     <ul>
-      <li>Se comprueba si hay una fila seleccionada en la tabla.</li>
-      <li>Se obtiene el <code>customer_id</code> de ese cliente.</li>
       <li>
-        Con ese ID se busca también el contacto con
-        <code>ContactDAOImpl.getByCustomerId()</code>.
+        <strong>Datos del cliente:</strong> Nombre de empresa, dirección, web y
+        límite de crédito.
       </li>
       <li>
-        Se mete todo en un DTO que hice precisamente para este ejercicio:
-        <code>ClienteModificarDTO</code>.
-      </li>
-      <li>
-        Y se abre la ventana <code>FormularioModificarClienteVista</code> con
-        esos datos cargados.
+        <strong>Datos del contacto:</strong> Nombre, apellidos, email y teléfono
+        del contacto asociado.
       </li>
     </ul>
 
     <img
-      src="imagenes/ejercicio3_img4.png"
-      alt="Formulario edición cliente"
+      src="imagenes/ejercicio3cap.png"
+      alt="Formulario con campos modificables"
       style="max-width: 100%; margin-bottom: 20px"
     />
 
-    <h2>🖥️ ¿Qué hace la vista?</h2>
+    <h2>✅ ¿Qué pasa al guardar?</h2>
     <p>
-      La clase <code>FormularioModificarClienteVista</code> muestra un
-      formulario con los siguientes campos:
-    </p>
-
-    <ul>
-      <li>
-        <strong>Datos del cliente:</strong> nombre, dirección, web, límite de
-        crédito
-      </li>
-      <li>
-        <strong>Datos del contacto:</strong> nombre, apellidos, email, teléfono
-      </li>
-    </ul>
-
-    <p>
-      Cuando se pulsa el botón “Grabar cambios”, se llaman a los métodos
-      <code>update()</code> de los dos DAOs y se guardan los cambios en la base
-      de datos.
+      Si todos los campos están correctamente rellenados, el sistema guarda los
+      cambios en la base de datos y muestra un mensaje de confirmación. Después
+      se cierra la ventana.
     </p>
 
     <img
-      src="imagenes/ejercicio3_img5.png"
-      alt="Formulario con datos cargados"
+      src="imagenes/ejercicio3cap2.png"
+      alt="Formulario con campos modificables"
       style="max-width: 100%; margin-bottom: 20px"
     />
 
-    <h2>🧩 ¿Qué hace el controlador?</h2>
+    <h2>⚠️ ¿Qué pasa si falta algún dato?</h2>
     <p>
-      El controlador es el que se encarga de conectar todo: primero carga los
-      clientes, luego cuando pulsas el botón de modificar, se encarga de buscar
-      los datos del contacto, montar el DTO con toda la información, y abrir la
-      nueva vista.
+      Si no has rellenado todos los campos, el sistema te mostrará un mensaje
+      indicando que es necesario completar todos los datos antes de continuar.
     </p>
-
-    <p>
-      Como Java me daba error al intentar usar una lista dentro de un
-      <code>ActionListener</code>, usé un pequeño truco que encontré: metí la
-      lista en un array de un solo elemento, y así me dejaba acceder sin
-      problema.
-    </p>
-
-    <pre><code>// Truco para poder usar la lista dentro del botón
-final List&lt;Customer&gt;[] listaClientes = new List[1];
-listaClientes[0] = customerDAO.getAll(conn);
-...
-Customer cliente = listaClientes[0].get(filaSeleccionada);</code></pre>
-
-    <h2>✅ Validaciones</h2>
-    <ul>
-      <li>
-        El botón de “Modificar cliente” no se activa si no se ha seleccionado
-        nada.
-      </li>
-      <li>Se muestran mensajes de error si algo falla al cargar o guardar.</li>
-    </ul>
 
     <img
       src="imagenes/ejercicio3_img6.png"
-      alt="Formulario edición cliente"
+      alt="Mensaje de confirmación"
       style="max-width: 100%; margin-bottom: 20px"
     />
 
-    <h2>⚠️ Problemas encontrados</h2>
-    <ul>
-      <li>
-        Al principio no sabía cómo juntar los datos del cliente y el contacto,
-        pero haciendo un DTO propio me quedó todo más organizado y fue más fácil
-        pasarlo a la vista.
-      </li>
-    </ul>
-    <img
-      src="imagenes/ejercicio3_img7.png"
-      alt="DTO del ejercicio 3 llenandose en el controller"
-      style="max-width: 100%; margin-bottom: 20px"
-    />
-    <img
-      src="imagenes/ejercicio3_img8.png"
-      alt="Vista recoge DTO del ejercicio 3"
-      style="max-width: 100%; margin-bottom: 1px"
-    />
-
-    <h2>🔚 Conclusión</h2>
+    <h2>🎯 Resultado final</h2>
     <p>
-      Este ejercicio me ayudó bastante a entender cómo trabajar con datos que
-      vienen de dos tablas distintas. También vi lo importante que es separar
-      bien los DAOs, la vista y el controlador para no liarse. Al principio me
-      costó entender cómo encajarlo todo, pero ahora que lo tengo montado, lo
-      veo claro y funciona bien.
+      Con esta funcionalidad puedes mantener actualizados los datos de los
+      clientes de forma fácil. Es ideal para corregir errores o actualizar la
+      información de contacto.
     </p>
   </body>
 </html>

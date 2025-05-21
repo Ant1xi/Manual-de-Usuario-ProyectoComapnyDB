@@ -2,234 +2,80 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Ejercicio 1 - Alta de Nuevo Empleado</title>
+    <title>Ejercicio 1 - Alta de Empleado</title>
     <link rel="stylesheet" href="estilo_pagina_principal.css" />
   </head>
   <body>
     <a href="Pagina_principal.html" style="display: block; margin-bottom: 20px"
       >⬅ Volver al índice</a
     >
-
-    <a href="ejercicio2.html" class="boton-navegacion">
-      Ver siguiente ejercicio ➡️
-    </a>
+    <a href="ejercicio2.html" class="boton-navegacion"
+      >Ver siguiente ejercicio ➡️</a
+    >
 
     <h1>Ejercicio 1 - Alta de Nuevo Empleado</h1>
 
-    <h2>📌 Objetivo</h2>
+    <h2>📌 ¿Para qué sirve?</h2>
     <p>
-      Crear una pantalla con interfaz gráfica que permita registrar nuevos
-      empleados en la base de datos Oracle mediante un formulario de entrada de
-      datos.
+      Esta funcionalidad permite registrar un nuevo empleado en el sistema de la
+      empresa. El usuario puede introducir los datos básicos del trabajador y
+      guardarlos fácilmente.
     </p>
+
+    <h2>🧭 ¿Cómo funciona?</h2>
+    <ol>
+      <li>
+        El usuario abre el programa y hace clic en el botón "Alta de Empleado".
+      </li>
+      <li>Se abre una ventana con un formulario.</li>
+      <li>Se rellenan los campos con los datos del nuevo empleado.</li>
+      <li>Al pulsar el botón “Guardar”, el sistema guarda la información.</li>
+    </ol>
 
     <img
       src="imagenes/ejercicio1_img3.png"
-      alt="Formulario Swing para alta de empleado"
+      alt="Formulario de alta de empleado"
       style="max-width: 100%; margin-bottom: 20px"
     />
 
-    <h2>🧠 ¿Qué hace este ejercicio?</h2>
-    <p>
-      El usuario abre la aplicación, pulsa un botón para dar de alta un
-      empleado, escribe los datos del nuevo trabajador (nombre, apellido, etc.),
-      y pulsa “Guardar”. Entonces, la app guarda esa información en la base de
-      datos Oracle de forma segura.
-    </p>
-
-    <h2>🔄 ¿Dónde empieza todo?</h2>
-    <h3>1️⃣ El programa arranca en <code>VentanaPrincipal</code></h3>
-    <p>
-      Es el punto de entrada del programa. Desde su método
-      <code>main()</code>, se muestra una ventana con botones que activan cada
-      funcionalidad. En este caso, el botón "Alta de Empleado" activa el
-      ejercicio 1.
-    </p>
-
-    <h2>▶️ ¿Qué pasa al pulsar el botón “Alta de Empleado”?</h2>
-    <ul>
-      <li>Se crea un objeto <code>EmployeeControllerEjercicio1</code>.</li>
-      <li>Se llama a su método <code>cargaVistaAltaEmpleado()</code>.</li>
-    </ul>
-
-    <img
-      src="imagenes/ejercicio1_img2.png"
-      alt="Ventana principal con botones de ejercicios"
-      style="max-width: 100%; margin-bottom: 20px"
-    />
-
-    <h2>🧭 ¿Qué hace el controlador?</h2>
-    <h3>2️⃣ Método <code>cargaVistaAltaEmpleado()</code></h3>
-    <ul>
-      <li>
-        Se conecta a la base de datos con
-        <code>DataBaseConector.getConnection()</code>.
-      </li>
-      <li>
-        Usa el DAO <code>EmployeeDAOImpl</code> para recuperar todos los
-        empleados.
-      </li>
-      <li>
-        Convierte cada empleado en un <code>OpcionComboDTO</code> con ID y
-        nombre completo.
-      </li>
-      <li>
-        Llama a <code>AltaEmpleadoVista</code> pasándole esa lista para llenar
-        el <code>JComboBox</code> de jefes.
-      </li>
-    </ul>
-
-    <img
-      src="imagenes/ejercicio1_img1.png"
-      alt="Código del controlador de alta de empleado"
-      style="max-width: 100%; margin-bottom: 1px"
-    />
-
-    <h2>🖥️ ¿Qué muestra la vista?</h2>
-    <p>
-      La clase <code>AltaEmpleadoVista</code> crea un formulario en Java Swing
-      con los siguientes campos:
-    </p>
+    <h2>📋 ¿Qué datos hay que introducir?</h2>
     <ul>
       <li>Nombre</li>
-      <li>Apellido</li>
+      <li>Apellidos</li>
       <li>Email</li>
       <li>Teléfono</li>
+      <li>Fecha de contratación</li>
       <li>Cargo</li>
-      <li>Jefe (seleccionado desde un <code>JComboBox</code>)</li>
+      <li>Jefe (opcional, desde una lista desplegable)</li>
     </ul>
 
-    <p>
-      Además, tiene un botón <strong>Guardar</strong> que ejecuta una validación
-      y llama al controlador para insertar el nuevo empleado.
-    </p>
-
     <img
-      src="imagenes/ejercicio1_img5.png"
-      alt="Código de la vista para guardar empleado"
-      style="max-width: 100%; margin-bottom: 1px"
+      src="imagenes/capEjercicio1Vmejorada.png"
+      alt="Campos del formulario"
+      style="max-width: 100%; margin-bottom: 20px"
     />
 
-    <h2>✅ ¿Qué hace al pulsar “Guardar”?</h2>
-    <ol>
-      <li>Comprueba que todos los campos estén rellenados.</li>
-      <li>
-        Si hay errores, muestra un <code>JOptionPane</code> de advertencia.
-      </li>
-      <li>
-        Si todo está bien, construye un objeto <code>Employee</code> y lo pasa
-        al método <code>guardarEmpleado()</code> del controlador.
-      </li>
-      <li>
-        Este método usa el DAO para hacer el <code>INSERT</code> en Oracle.
-      </li>
-    </ol>
-
-    <h2>🗃️ ¿Qué hace el DAO?</h2>
+    <h2>⚠️ Si hay errores</h2>
     <p>
-      La clase <code>EmployeeDAOImpl</code> se conecta a la base de datos y
-      ejecuta la siguiente consulta:
+      Si falta algún dato obligatorio, el programa mostrará un aviso pidiendo
+      completar los campos.
     </p>
 
+    <h2>✅ Resultado</h2>
     <p>
-      <code>
-        INSERT INTO employees (first_name, last_name, email, phone, hire_date,
-        manager_id, job_title) VALUES (?, ?, ?, ?, ?, ?, ?);
-      </code>
+      Si todo está correctamente rellenado, aparece un mensaje confirmando que
+      el empleado ha sido añadido correctamente.
     </p>
-
-    <img
-      src="imagenes/ejercicio1_img7.png"
-      alt="Código del DAO para crear empleado"
-      style="max-width: 100%; margin-bottom: 1px"
-    />
-    <p>
-      El método <code>create()</code> se encarga de convertir los datos de
-      <code>Employee</code> a los tipos adecuados para Oracle y ejecutar la
-      operación.
-    </p>
-
-    <h2>🛡️ Validaciones y errores</h2>
-    <ul>
-      <li>
-        Se lanza <code>IncorrectDataException</code> si algún campo obligatorio
-        está vacío.
-      </li>
-      <li>
-        Se usa <code>JOptionPane</code> para mostrar errores de validación o
-        éxito en el guardado.
-      </li>
-      <li>
-        El controlador captura errores de conexión o de inserción con mensajes
-        claros.
-      </li>
-    </ul>
-
     <img
       src="imagenes/ejercicio1_img8.png"
-      alt="Tipos de JOptionPane"
-      style="max-width: 100%; margin-bottom: 1px"
+      alt="Mensaje de error"
+      style="max-width: 100%; margin-bottom: 20px"
     />
 
-    <h2>🧱 Arquitectura usada</h2>
+    <h2>🎯 Conclusión</h2>
     <p>
-      Este ejercicio está estructurado siguiendo el patrón
-      <strong>MVC (Modelo - Vista - Controlador)</strong>, con una separación
-      clara:
-    </p>
-    <ul>
-      <li><strong>Modelo:</strong> clase <code>Employee</code></li>
-      <li>
-        <strong>Vista:</strong> clase <code>AltaEmpleadoVista</code> (Swing)
-      </li>
-      <li>
-        <strong>Controlador:</strong> <code>EmployeeControllerEjercicio1</code>
-      </li>
-      <li><strong>DAO:</strong> <code>EmployeeDAOImpl</code></li>
-      <li>
-        <strong>DTO:</strong> <code>OpcionComboDTO</code> para llenar combos
-      </li>
-    </ul>
-
-    <h2>🔚 Conclusión</h2>
-    <p>
-      En este ejercicio he creado todo el proceso para poder dar de alta un
-      nuevo empleado en la base de datos usando una interfaz gráfica hecha con
-      Java Swing.
-    </p>
-    <p>
-      He seguido el patrón Modelo-Vista-Controlador para tener el código bien
-      organizado y separar la lógica, la vista y los datos. Para rellenar el
-      combo con los jefes disponibles, utilicé un DTO que me permite pasar solo
-      lo necesario a la vista sin acoplarla a la base de datos.
-    </p>
-    <p>
-      Al principio, sinceramente, no entendía del todo cómo funcionaba el patrón
-      MVC. Me saltaba capas sin darme cuenta, y mezclaba un poco todo porque no
-      lo tenía claro. Fue gracias a la ayuda de Quique, que me lo explicó muy
-      bien y de forma sencilla, cuando por fin entendí cómo debía estructurar el
-      proyecto. Desde ese momento he intentado que todo lo que hago siga esa
-      idea de separación en capas lo mejor posible.
-    </p>
-    <p>
-      También tuve algunos problemas técnicos, como el manejo de fechas. Me
-      costó un poco entender que tenía que convertir el <code>Date</code> de
-      Java a <code>java.sql.Date</code> para poder guardarlo correctamente en
-      Oracle. Además, tuve que tener cuidado con los campos que pueden ser
-      nulos, como el ID del manager, y usé <code>setObject</code> con
-      <code>Types.INTEGER</code> para eso.
-    </p>
-    <p>
-      Añadí validaciones para asegurarme de que no se pudiera guardar un
-      empleado si faltaban datos importantes, y usé
-      <code>JOptionPane</code> para mostrar mensajes al usuario según fuera
-      necesario.
-    </p>
-    <p>
-      En general, este ejercicio me ha ayudado mucho a entender cómo se
-      estructura una aplicación real, a aplicar el patrón MVC de forma más
-      consciente, y a trabajar con base de datos desde Java de manera más
-      profesional.
+      Con este formulario, se facilita la gestión del personal permitiendo
+      añadir nuevos empleados de manera rápida, sencilla y segura.
     </p>
   </body>
 </html>

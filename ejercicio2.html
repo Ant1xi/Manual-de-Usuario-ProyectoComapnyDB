@@ -9,159 +9,73 @@
     <a href="Pagina_principal.html" style="display: block; margin-bottom: 20px"
       >⬅ Volver al índice</a
     >
-
-    <a href="ejercicio3.html" class="boton-navegacion">
-      Ver siguiente ejercicio ➡️
-    </a>
-    
+    <a href="ejercicio3.html" class="boton-navegacion"
+      >Ver siguiente ejercicio ➡️</a
+    >
 
     <h1>Ejercicio 2 - Alta de Nuevo Almacén</h1>
 
-    <h2>📌 Objetivo</h2>
+    <h2>📌 ¿Para qué sirve?</h2>
     <p>
-      Permitir al usuario crear un nuevo almacén a través de una interfaz gráfica, seleccionando su ubicación mediante una cadena de selección: Región → País → Ubicación.
+      Este apartado permite dar de alta un nuevo almacén en el sistema,
+      indicando su ubicación a través de una selección guiada por región, país y
+      ciudad.
     </p>
+
+    <h2>🧭 ¿Cómo se utiliza?</h2>
+    <ol>
+      <li>
+        Desde el menú principal, se hace clic en el botón "Alta de Almacén".
+      </li>
+      <li>Se abre una ventana con varios campos y listas desplegables.</li>
+      <li>Primero se elige la región.</li>
+      <li>Después, se selecciona un país dentro de esa región.</li>
+      <li>Luego, se escoge la ubicación concreta dentro del país.</li>
+      <li>
+        Por último, se escribe el nombre del nuevo almacén y se pulsa el botón
+        "Crear nuevo almacén".
+      </li>
+    </ol>
 
     <img
-    src="imagenes/ejercicio2_img1.png"
-    alt="Formulario Swing para alta de almacén"
-    style="max-width: 100%; margin-bottom: 20px"
-  />
-
-    <h2>🧠 ¿Qué hace este ejercicio?</h2>
-    <p>
-      El usuario selecciona una región, luego un país dentro de esa región, después una ubicación concreta, introduce el nombre del almacén y finalmente lo guarda. El programa inserta ese almacén en la base de datos, en la tabla <code>WAREHOUSES</code>.
-    </p>
-
-    <h2>🧭 ¿Dónde empieza todo?</h2>
-    <h3>1️⃣ En la ventana principal</h3>
-    <p>
-      Al pulsar el botón "Alta de Almacén", se llama al controlador <code>AlmacenControllerEjercicio2</code> que abre la ventana <code>AltaAlmacenVista</code>.
-    </p>
-
-    <img
-    src="imagenes/ejercicio2_img2.png"
-    alt="Botón alta de almacén"
-    style="max-width: 100%; margin-bottom: 20px"
-  />
-
-  <img
-  src="imagenes/ejercicio2_img3.png"
-  alt="Método que carga la vista"
-  style="max-width: 100%; margin-bottom: 1px"
-/>
-
-    <h2>🖥️ ¿Qué hace la vista?</h2>
-    <p>
-      La clase <code>AltaAlmacenVista</code> es una ventana Swing con los siguientes elementos:
-    </p>
-    <ul>
-      <li><strong>Combo 1:</strong> Selección de región</li>
-      <li><strong>Combo 2:</strong> Lista de países según región</li>
-      <li><strong>Combo 3:</strong> Lista de ubicaciones según país</li>
-      <li><strong>Campo de texto:</strong> Nombre del nuevo almacén</li>
-      <li><strong>Botón:</strong> Crear nuevo almacén</li>
-    </ul>
-
-    <p>
-      Cada combo se actualiza automáticamente cuando cambia el anterior. Por ejemplo, al cambiar de región, se recargan los países disponibles.
-    </p>
-
-    <img
-      src="imagenes/ejercicio2_img4.png"
-      alt="Vista Ejercicio 2"
+      src="imagenes/ejercicio2_img1.png"
+      alt="Formulario para crear almacén"
       style="max-width: 100%; margin-bottom: 20px"
     />
 
-    <img
-    src="imagenes/ejercicio2_img5.png"
-    alt="Metodos para cargar los JComboBox"
-    style="max-width: 100%; margin-bottom: 1px"
-  />
-
-    <h2>🧩 ¿Qué hace el controlador?</h2>
-    <p>
-      El controlador <code>AlmacenControllerEjercicio2</code> es el intermediario entre la vista y los DAOs. Se encarga de:
-    </p>
+    <h2>🧾 ¿Qué datos hay que introducir?</h2>
     <ul>
-      <li>Cargar todas las regiones usando <code>RegionDAOImpl</code>.
-        <img
-        src="imagenes/ejercicio2_img6.png"
-        alt="Vista Ejercicio 2"
-        style="max-width: 100%; margin-bottom: 10px"
-      />
-      </li>
-      <li>Según la región, cargar países con <code>CountryDAOImpl</code>.
-        <img
-        src="imagenes/ejercicio2_img7.png"
-        alt="Vista Ejercicio 2"
-        style="max-width: 100%; margin-bottom: 10px"
-      />
-      </li>
-      <li>Según el país, cargar ubicaciones con <code>LocationDAOImpl</code>.
-        <img
-        src="imagenes/ejercicio2_img8.png"
-        alt="Vista Ejercicio 2"
-        style="max-width: 100%; margin-bottom: 10px"
-      />
-      </li>
-      <li>Insertar el almacén con nombre y <code>location_id</code> usando <code>insertarAlmacen()</code>.
-        <img
-        src="imagenes/ejercicio2_img9.png"
-        alt="Vista Ejercicio 2"
-        style="max-width: 100%; margin-bottom: 10px"
-      />
-      </li>
+      <li><strong>Región:</strong> Se elige de una lista desplegable.</li>
+      <li><strong>País:</strong> Aparece según la región seleccionada.</li>
+      <li><strong>Ubicación:</strong> Se selecciona según el país elegido.</li>
+      <li><strong>Nombre del almacén:</strong> Escrito por el usuario.</li>
     </ul>
 
+    <h2>⚠️ ¿Qué pasa si falta algo?</h2>
     <p>
-      Para adaptar correctamente los combos, se han utilizado dos DTOs:
-      <ul>
-        <li><code>OpcionComboDTO</code> para regiones y ubicaciones.</li>
-        <li><code>OpcionPaisesComboDTO2</code> para países (ya que el ID del país es <code>String</code> y no <code>Integer</code>).</li>
-      </ul>
+      Si no se ha seleccionado región, país o ubicación, o si el nombre del
+      almacén está vacío, el sistema mostrará un aviso indicando que hay que
+      completar todos los campos.
     </p>
 
-    <h2>🗃️ Acceso a datos (DAOs)</h2>
-    <ul>
-      <li><strong>RegionDAOImpl:</strong> devuelve todas las regiones.</li>
-      <li><strong>CountryDAOImpl:</strong> devuelve países filtrados por región.</li>
-      <li><strong>LocationDAOImpl:</strong> devuelve ubicaciones por país y ejecuta el <code>INSERT</code> de almacenes.</li>
-      <li><strong>WarehouseDAOImpl:</strong> (alternativo) también inserta almacenes con nombre y ubicación.</li>
-    </ul>
-
-    <h2>✅ Validaciones</h2>
-    <ul>
-      <li>Se comprueba que el nombre del almacén no esté vacío.</li>
-      <li>Se verifica que haya una ubicación seleccionada.</li>
-      <li>Se muestra un <code>JOptionPane</code> si falta algún dato.</li>
-      <li>Al insertar correctamente, se muestra mensaje de éxito y se cierra la ventana.</li>
-    </ul>
+    <h2>✅ ¿Qué pasa si todo va bien?</h2>
+    <p>
+      Si todos los campos están correctamente rellenados, el sistema guarda el
+      nuevo almacén y muestra un mensaje de confirmación. Después se cierra la
+      ventana.
+    </p>
 
     <img
-    src="imagenes/ejercicio2_img10.png"
-    alt="Vista Ejercicio 2"
-    style="max-width: 100%; margin-bottom: 10px"
-  />
+      src="imagenes/ejercicio2_img10.png"
+      alt="Mensaje de almacén creado"
+      style="max-width: 100%; margin-bottom: 20px"
+    />
 
-    <h2>⚠️ Problemas encontrados</h2>
-    <ul>
-      <li>
-        Al principio, tuve problemas para enlazar correctamente los combos dependientes. 
-        A veces al seleccionar una región, los países no se actualizaban bien por no haber limpiado el combo anterior.
-      </li>
-      <li>
-        También tuve dudas al crear un DTO específico para países con <code>String</code> como ID, ya que el DTO que usaba antes solo aceptaba <code>Integer</code>. 
-        Esto me obligó a pensar mejor cómo adaptar los datos a la vista.
-      </li>
-    </ul>
-
-    <h2>🔚 Conclusión</h2>
+    <h2>🎯 Resultado final</h2>
     <p>
-      Este ejercicio me ha ayudado a entender mejor cómo manejar relaciones entre datos en una interfaz gráfica, y cómo construir una experiencia de usuario fluida con combos dependientes.  
-      Aunque al principio se me complicó un poco hacer que los combos se actualizaran bien y usar diferentes DTOs según el tipo de dato, con la práctica lo resolví.  
-      También he aprendido a validar mejor los datos antes de insertarlos, y a usar excepciones y mensajes para guiar al usuario.  
-      En definitiva, este ejercicio me ha servido para reforzar el patrón MVC y mejorar la interacción con bases de datos desde una interfaz Java.
+      Una vez creado, el almacén queda registrado en el sistema con la ubicación
+      seleccionada. Esta funcionalidad permite mantener organizada la gestión de
+      los almacenes de forma clara y sencilla.
     </p>
   </body>
 </html>
